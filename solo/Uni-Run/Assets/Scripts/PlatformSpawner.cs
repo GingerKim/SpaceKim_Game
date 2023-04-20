@@ -54,7 +54,7 @@ public class PlatformSpawner : MonoBehaviour {
         if(Time.time >= lastSpawnTime + timeBetSpawn)
         {
             // 기록된 마지막 배치 시점을 현재 시점으로 갱신
-            lastSpawnTime += Time.time;
+            lastSpawnTime = Time.time;
 
             // 다음 배치까지의 시간 간격을 timeBetSpawnMin, timeBetSpawnMax 사이에서 랜덤 설정
             timeBetSpawn = Random.Range(timeBetSpawnMin, timeBetSpawnMax);
