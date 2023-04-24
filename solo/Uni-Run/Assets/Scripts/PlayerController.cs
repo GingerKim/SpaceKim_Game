@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 // PlayerController는 플레이어 캐릭터로서 Player 게임 오브젝트를 제어한다.
 public class PlayerController : MonoBehaviour {
@@ -73,17 +75,20 @@ public class PlayerController : MonoBehaviour {
         GameManager.instance.OnPlayerDead();
    }
 
-   private void OnTriggerEnter2D(Collider2D other)
-   {
-       // 트리거 콜라이더를 가진 장애물과의 충돌을 감지
-       if (other.tag == "Dead" && !isDead)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Goal"))
         {
-            // 충돌한 상대방의 태그가 dead이며 아직 사망하지 않았다면 die() 실행
+            // 충돌한 상대방의 태그가 Goal인 경우 지정한 씬으로 이동
+            SceneManager.LoadScene("End");
+        }
+        else if (other.CompareTag("Dead") && !isDead)
+        {
             Die();
         }
-   }
+    }
 
-   private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
    {
         // 바닥에 닿았음을 감지하는 처리
         // 어떤 콜라이더와 닿았으며, 충돌 표면이 위쪽을 보고 있으면
@@ -94,6 +99,8 @@ public class PlayerController : MonoBehaviour {
             jumpCount = 0;
         }
    }
+
+
 
    private void OnCollisionExit2D(Collision2D collision)
    {

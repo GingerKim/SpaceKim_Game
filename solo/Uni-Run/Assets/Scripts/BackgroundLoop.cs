@@ -8,6 +8,7 @@ public class BackgroundLoop : MonoBehaviour {
     {
         // 가로 길이를 측정하는 처리
         // boxCollider2D 컴포넌트의 size 필드의 x 값을 가로 길이로 사용
+        // 오브젝트의 가로 길이와 박스컬라이더의 사이즈 x 값이 맞지 않으면 배경이 끊어지거나 겹침
         BoxCollider2D backgroundCollider = GetComponent<BoxCollider2D>();
         width = backgroundCollider.size.x;
     }
@@ -15,7 +16,7 @@ public class BackgroundLoop : MonoBehaviour {
     private void Update()
     {
         // 현재 위치가 원점에서 왼쪽으로 width 이상 이동했을때 위치를 리셋
-        if (transform.position.x <= width)
+        if (transform.position.x <= -width)
         {
             Reposition();
         }
