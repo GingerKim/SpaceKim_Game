@@ -104,5 +104,10 @@ public class PlayerController : MonoBehaviour
         // 자신의 게임 오브젝트를 비활성화 한다
         // 인스펙터 창에 있는 체크박스를 활성화 비활성화 하는 것처럼 SetActive로 설정할 수 있음
         gameObject.SetActive(false);
+
+        // 씬에 존재하는 GameManager 타입의 오브젝트를 찾아서 가져오기
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        // 가져온 GameManager 오브젝트의 EndGame()에서도 실행
+        gameManager.EndGame();
     }
 }
