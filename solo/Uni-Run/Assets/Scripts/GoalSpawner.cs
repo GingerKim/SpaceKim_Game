@@ -34,6 +34,17 @@ public class GoalSpawner : MonoBehaviour
         float cameraWidth = cameraHeight * mainCamera.aspect;
         Vector3 spawnPos = new Vector3(mainCamera.transform.position.x + cameraWidth / 2f, 0f, 0f);
 
+        // platform 태그를 가진 오브젝트와 겹치지 않도록 y축을 0.2 정도 더한 위치에서 생성
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPos, 1f);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Platform"))
+            {
+                spawnPos += new Vector3(0f, +0.2f, 0f);
+                break;
+            }
+        }
+
         Instantiate(goalPrefab, spawnPos, Quaternion.identity);
         currentGoalCount++;
     }

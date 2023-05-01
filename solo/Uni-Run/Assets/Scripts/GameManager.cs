@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private float startTime = 31f; // 게임 시작 시간(3분)
     private float currentTime; // 현재 시간
 
+    public AudioSource bgm; // BGM을 참조하기 위한 변수
+
     void Awake()
     {
         if (instance == null)
@@ -48,6 +50,11 @@ public class GameManager : MonoBehaviour
             {
                 OnPlayerDead();
             }
+        }
+
+        if (isGameover) // 게임 오버 상태이면
+        {
+            bgm.Stop(); // BGM을 중지합니다.
         }
 
         // 게임 오버 상태에서 게임을 재시작할 수 있게 하는 처리

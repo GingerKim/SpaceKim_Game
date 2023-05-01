@@ -5,8 +5,10 @@ public class TextScroll2 : MonoBehaviour
 {
     public float speed = 110.0f;
     public float stopPosition = 500.0f;
+    public GameObject hiddenObject;
 
     private bool isMoving = true;
+    private bool isHiddenObjectShown = false;
 
     void Update()
     {
@@ -20,7 +22,15 @@ public class TextScroll2 : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            SceneManager.LoadScene("Staff");
+            if (!isHiddenObjectShown)
+            {
+                hiddenObject.SetActive(true);
+                isHiddenObjectShown = true;
+            }
+            else
+            {
+                SceneManager.LoadScene("Title");
+            }
         }
     }
 }
