@@ -17,7 +17,8 @@ public class PlayerAttackScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 	
 	}
 
@@ -28,9 +29,8 @@ public class PlayerAttackScript : MonoBehaviour {
         {
             Vector3 _Vec = (other.transform.position - transform.position).normalized;
             _Vec.y=0;
-            other.transform.localPosition += _Vec * 0.5f;
+            other.transform.localPosition += _Vec * 10f;
 			other.SendMessage("Damaged",10.0f);
         }
-        
     }
 }
