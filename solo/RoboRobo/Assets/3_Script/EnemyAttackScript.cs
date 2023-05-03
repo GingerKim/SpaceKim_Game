@@ -4,18 +4,15 @@ using System.Collections;
 public class EnemyAttackScript : MonoBehaviour {
 	
 	public EnemyScript _EnemySt;
+	private float _Attack;
 
 	// Use this for initialization
 	void Start () {
-		
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
+		_Attack = _EnemySt._attack;
+
+
+    }
+
     void OnTriggerEnter(Collider other)
     {
         
@@ -24,7 +21,7 @@ public class EnemyAttackScript : MonoBehaviour {
             Vector3 _Vec = (other.transform.position - transform.position).normalized;
             _Vec.y=0;
             other.transform.localPosition += _Vec * 0.5f;
-			other.SendMessage("Damaged",10.0f);
+			other.SendMessage("Damaged",_Attack);
         }
         
     }

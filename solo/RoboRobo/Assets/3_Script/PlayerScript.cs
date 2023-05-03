@@ -155,7 +155,6 @@ public class PlayerScript : MonoBehaviour
             GameOver();
         }
     }
-
     public void GameOver()
 	{
 		//game over
@@ -181,3 +180,7 @@ public class PlayerScript : MonoBehaviour
         SceneManager.LoadScene("1_play");
     }
 }
+
+
+
+
