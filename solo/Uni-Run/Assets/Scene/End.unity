@@ -671,4 +671,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 110
   stopPosition: 500
-  hiddenObject: {fileID: 0}
+  hiddenObject: {fileID: 2000461314}
